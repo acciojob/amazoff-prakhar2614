@@ -136,7 +136,21 @@ public class OrderRepository {
             Order o= orderMap.get(s);
             if(o.getDeliveryTime() > time)time= o.getDeliveryTime();
         }
-        String strTime = String.valueOf(time/60) +":"+ String.valueOf(time%60 );
+        int hr = time/60;
+        int min = time%60;
+        String hour = "";
+        String mm = "";
+        if(hr<10){
+            hour = "0"+String.valueOf(hr);
+        }else {
+            hour = String.valueOf(hr);
+        }
+        if(min<10){
+            mm = "0"+String.valueOf(min);
+        }else{
+            mm = String.valueOf(min);
+        }
+        String strTime = hour +":"+mm;
         return strTime ;
     }
 }
