@@ -115,10 +115,9 @@ public class OrderRepository {
 
     public Integer findOrdersLeftAfterGivenTimeByPartnerId(String timeString, String partnerId){
         // your code here
-        int time = Integer.parseInt(timeString);
-        int hr = time/100;
-        int min = time%100;
-        time = hr*60+min;
+        int hr = Integer.parseInt(timeString.substring(0,2));
+        int min = Integer.parseInt(timeString.substring(3));
+        int time = hr*60+min;
         HashSet<String> set = partnerToOrderMap.get(partnerId);
         int count = 0;
         for(String s: set){
